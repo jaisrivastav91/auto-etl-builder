@@ -1,0 +1,25 @@
+# --- ingestion + warehouse + transform ---
+dlt[duckdb]>=1.0
+duckdb>=1.1
+dbt-core>=1.8
+dbt-duckdb>=1.8
+
+# --- orchestration / agents ---
+langgraph>=1.0
+langgraph-checkpoint-sqlite>=2.0
+langchain>=0.3
+langchain-anthropic>=0.3
+langchain-mcp-adapters>=0.1
+
+# --- MCP servers ---
+fastmcp>=2.12
+
+# --- RAG (local embeddings, no extra API key) ---
+sentence-transformers>=3.0
+bm25s>=0.2 # fast lexical BM25 (pure NumPy/SciPy)
+
+# --- guardrails + evals ---
+pydantic>=2.7
+deepeval>=2.0
+python-dotenv>=1.0
+streamlit>=1.38

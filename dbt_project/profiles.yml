@@ -1,0 +1,8 @@
+elt_project:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "warehouse/elt.duckdb"
+      schema: analytics
+      threads: 4

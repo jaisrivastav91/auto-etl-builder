@@ -1,0 +1,1 @@
+Comment: business definitions of common fields the Modeling agent should honor
