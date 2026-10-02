@@ -8,7 +8,8 @@ dbt-duckdb>=1.8
 langgraph>=1.0
 langgraph-checkpoint-sqlite>=2.0
 langchain>=0.3
-langchain-anthropic>=0.3
+langchain-openai>=0.2 # local models via OpenAI-compatible endpoints (Ollama / DMR)
+langchain-anthropic>=0.3 # optional
 langchain-mcp-adapters>=0.1
 
 # --- MCP servers ---
@@ -21,5 +22,7 @@ bm25s>=0.2 # fast lexical BM25 (pure NumPy/SciPy)
 # --- guardrails + evals ---
 pydantic>=2.7
 deepeval>=2.0
+
+# --- misc ---
 python-dotenv>=1.0
 streamlit>=1.38

@@ -15,7 +15,9 @@ def list_tables() -> list[str]:
     con = duckdb.connect(str(DUCKDB_PATH))
     try:
         return [
-            f"{s}.{t}" for s, t in con.execute("select table_schema, table_name from information_schema.tables").fetchall()
+            f"{s}.{t}" for s, t in con.execute(
+                "select table_schema, table_name from information_schema.tables"
+            ).fetchall()
         ]
     finally:
         con.close()
@@ -28,16 +30,9 @@ def describe_table(qualified_name: str) -> list[dict]:
     try:
         rows = con.execute(
             "select column_name, data_type from information_schema.columns "
-            "where table_schema = ? and table_name = ?",
-            [schema, table]
+            "where table_schema=? and table_name=?", [schema, table]
         ).fetchall()
-        return [
-            {
-                "column": c,
-                "type": t
-            }
-            for c, t in rows
-        ]
+        return [{"column": c, "type": t} for c, t in rows]
     finally:
         con.close()
 
@@ -45,15 +40,10 @@ def describe_table(qualified_name: str) -> list[dict]:
 def run_select(sql: str, max_rows: int = 50) -> list[dict]:
     """Read-only SELECT, capped."""
     assert_sql_safe(sql)
-    con = duckdb.connect(str(DUCKDB_PATH))
+    con = duckdb.connect(str(DUCKDB_PATH), read_only=True)
     try:
-        cur = con.execute(sql)
-        cols = [
-            d[0] for d in cur.description
-        ]
-        return [
-            dict(zip(cols, r)) for r in cur.fetchmany(max_rows)
-        ]
+        cur = con.execute(sql); cols = [d[0] for d in cur.description]
+        return [dict(zip(cols, r)) for r in cur.fetchmany(max_rows)]
     finally:
         con.close()
 

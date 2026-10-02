@@ -1,8 +1,27 @@
+# env / secrets
 .venv/
+.env
+
+# python
 __pycache__/
 *.pyc
-.env
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# local data / state
 warehouse/*.duckdb
+warehouse/*.sqlite
+warehouse/bm25_index/
+.dlt/
+
+# dbt
 dbt_project/target/
 dbt_project/logs/
-.dlt/
+dbt_project/.user.yml
+
+# os
+.DS_Store

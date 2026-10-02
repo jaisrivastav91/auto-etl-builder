@@ -1,8 +1,8 @@
 name: 'elt_project'
 version: '1.0.0'
 profile: 'elt_project'
-model-paths: ['models']
-target-path: 'target'
+model-paths: ["models"]
+target-path: "target"
 models:
   elt_project:
     staging:

@@ -1,0 +1,16 @@
+{
+    "mcpServers": {
+        "warehouse": {
+            "command": "python",
+            "args": ["mcp_servers/warehouse_server.py"]
+        },
+        "dlt": {
+            "command": "python",
+            "args": ["mcp_servers/dlt_server.py"]
+        },
+        "dbt": {
+            "command": "python",
+            "args": ["mcp_servers/dbt_server.py"]
+        }
+    }
+}
